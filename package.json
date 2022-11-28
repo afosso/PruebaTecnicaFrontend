@@ -20,6 +20,8 @@
     "@angular/router": "~12.2.0",
     "@ng-select/ng-select": "^7.4.0",
     "admin-lte": "3.2",
+    "jquery": "^3.6.1",
+    "ngx-toastr": "^14.3.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
