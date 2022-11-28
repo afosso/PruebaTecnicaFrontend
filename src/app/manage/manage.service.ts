@@ -22,15 +22,23 @@ export class ManageService {
     return this.http.get<any>(`${environment.urlbackend}brand/1`, {headers: this.headers});
   }
 
-  save(id: any, data: any) : Observable<any> {
+  save(id: any, data: any, url = "brand") : Observable<any> {
     if (id && id != 0) {
-      return this.http.put<any>(`${environment.urlbackend}brand/1`, JSON.stringify(data), {headers: this.headers});
+      return this.http.put<any>(`${environment.urlbackend}${url}/1`, JSON.stringify(data), {headers: this.headers});
     }
-    return this.http.post<any>(`${environment.urlbackend}brand`, JSON.stringify(data), {headers: this.headers});
+    return this.http.post<any>(`${environment.urlbackend}${url}`, JSON.stringify(data), {headers: this.headers});
   }
 
-  delete(id: any) : Observable<any> {
-    return this.http.delete<any>(`${environment.urlbackend}brand/${id}`, {headers: this.headers});
+  delete(id: any, url = "brand") : Observable<any> {
+    return this.http.delete<any>(`${environment.urlbackend}${url}/${id}`, {headers: this.headers});
+  }
+
+  getVehicles() : Observable<any> {
+    return this.http.get<any>(`${environment.urlbackend}vehicle`, {headers: this.headers});
+  }
+
+  getVehicleById(id: any) : Observable<any> {
+    return this.http.get<any>(`${environment.urlbackend}vehicle/${id}`, {headers: this.headers});
   }
 
 }

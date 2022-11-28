@@ -1,0 +1,72 @@
+<div class="container-fluid mt-2">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Administrar vehículos</div>
+                <div class="card-body">
+                    <form [formGroup]="frmVehicle">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label for="col-form-label">Estado</label>
+                                <ng-select [items]="listStatus" bindValue="id" bindLabel="name" placeholder="Seleccione un item" formControlName="status"></ng-select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="col-form-label">Marca</label>
+                                <ng-select [items]="listBrands" bindValue="id" bindLabel="name" placeholder="Seleccione un item" formControlName="brandId"></ng-select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label for="col-form-label">Línea</label>
+                                <input type="text" class="form-control" formControlName="line" placeholder="Linea">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="col-form-label">Modelo</label>
+                                <input type="number" class="form-control" formControlName="model" placeholder="Modelo">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="col-form-label">Valor comercial</label>
+                                <input type="text" class="form-control text-right" formControlName="marketValue" placeholder="Valor Comercial">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button type="button" class="btn btn-sm btn-success" (click)="save()">Guardar</button>
+                            <button type="button" class="btn btn-sm btn-secondary" (click)="back()">Inicio</button>
+                        </div>
+                    </form>
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Estado</th>
+                                        <th>Marca</th>
+                                        <th>Línea</th>
+                                        <th>Modelo</th>
+                                        <th>Valor comercial</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of listVehicles">
+                                        <td>{{ item.status }}</td>
+                                        <td>{{ item.brand }}</td>
+                                        <td>{{ item.line }}</td>
+                                        <td>{{ item.model }}</td>
+                                        <td>{{ item.marketValue | number }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-warning" (click)="edit(item.id)"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-danger" (click)="trash(item.id)"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
